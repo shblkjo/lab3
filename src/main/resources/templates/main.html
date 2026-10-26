@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список студентов</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Список студентов</h1>
+
+    <a class="button" th:href="@{/students/new}">
+        Добавить студента
+    </a>
+
+    <a class="button" th:href="@{/references}">
+        ВУЗы и группы
+    </a>
+
+    <h2>Поиск студентов</h2>
+
+    <form th:action="@{/students/find}" method="post">
+        <label>Искать по:</label>
+
+        <select name="searchType" required>
+            <option value="lastName"
+                    th:selected="${searchType == 'lastName'}">
+                Фамилии
+            </option>
+            <option value="university"
+                    th:selected="${searchType == 'university'}">
+                ВУЗу
+            </option>
+            <option value="group"
+                    th:selected="${searchType == 'group'}">
+                Группе
+            </option>
+            <option value="specialty"
+                    th:selected="${searchType == 'specialty'}">
+                Специальности
+            </option>
+            <option value="course"
+                    th:selected="${searchType == 'course'}">
+                Курсу
+            </option>
+        </select>
+
+        <label>Поисковый запрос:</label>
+        <input type="text" name="searchQuery"
+               th:value="${searchQuery}" required>
+
+        <button type="submit">Найти</button>
+        <a th:href="@{/students/main}">Сбросить поиск</a>
+    </form>
+
+    <h2>Результаты</h2>
+
+    <p th:if="${!students.iterator().hasNext()}">
+        Студенты не найдены.
+    </p>
+
+    <table th:if="${students.iterator().hasNext()}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Пол</th>
+            <th>Дата рождения</th>
+            <th>Телефон</th>
+            <th>ВУЗ</th>
+            <th>Курс</th>
+            <th>Группа</th>
+            <th>Средний балл</th>
+            <th>Специальность</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.patronymic}"></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.birthDate}"></td>
+            <td th:text="${student.phone}"></td>
+            <td th:text="${student.university.name}"></td>
+            <td th:text="${student.course}"></td>
+            <td th:text="${student.studentGroup.name}"></td>
+            <td th:text="${student.averageGrade}"></td>
+            <td th:text="${student.specialty}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

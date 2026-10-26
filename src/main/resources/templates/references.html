@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Справочники</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Университеты и учебные группы</h1>
+
+<p><a href="/students/main">К списку студентов</a></p>
+
+<h2>Добавить ВУЗ</h2>
+<form action="/references/university" method="post"
+      th:object="${university}">
+    <p>
+        <input type="text" th:field="*{name}"
+               placeholder="Название ВУЗа" required>
+    </p>
+    <div th:if="${#fields.hasErrors('name')}"
+         th:errors="*{name}"></div>
+    <button type="submit">Добавить ВУЗ</button>
+</form>
+
+<h2>Список ВУЗов</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Название</th>
+    </tr>
+    <tr th:each="u : ${universities}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+    </tr>
+</table>
+
+<h2>Добавить учебную группу</h2>
+<form action="/references/group" method="post"
+      th:object="${group}">
+    <p>
+        <input type="text" th:field="*{name}"
+               placeholder="Название группы" required>
+    </p>
+
+    <div th:if="${#fields.hasErrors('name')}"
+         th:errors="*{name}"></div>
+
+    <p>
+        <select name="universityId" required>
+            <option value="">Выберите ВУЗ</option>
+            <option th:each="u : ${universities}"
+                    th:value="${u.id}"
+                    th:text="${u.name}"></option>
+        </select>
+    </p>
+
+    <button type="submit">Добавить группу</button>
+</form>
+
+
+<h2>Список групп</h2>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Группа</th>
+        <th>ВУЗ</th>
+    </tr>
+    <tr th:each="g : ${groups}">
+        <td th:text="${g.id}"></td>
+        <td th:text="${g.name}"></td>
+        <td th:text="${g.university.name}"></td>
+    </tr>
+</table>
+</body>
+</html>

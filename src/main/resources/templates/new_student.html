@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Студент</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Добавление студента</h1>
+
+    <form th:action="@{/students/new}"
+          th:object="${student}"
+          method="post">
+
+        <label>Фамилия:</label>
+        <input type="text" th:field="*{lastName}" required>
+        <p th:if="${#fields.hasErrors('lastName')}"
+           th:errors="*{lastName}"></p>
+
+        <label>Имя:</label>
+        <input type="text" th:field="*{firstName}" required>
+        <p th:if="${#fields.hasErrors('firstName')}"
+           th:errors="*{firstName}"></p>
+
+        <label>Отчество:</label>
+        <input type="text" th:field="*{patronymic}">
+
+        <label>Пол:</label>
+        <input type="text" th:field="*{gender}" required>
+
+        <label>Национальность:</label>
+        <input type="text" th:field="*{nationality}" required>
+
+        <label>Рост (см):</label>
+        <input type="number" th:field="*{height}" min="50" max="250" required>
+        <p th:if="${#fields.hasErrors('height')}"
+           th:errors="*{height}"></p>
+
+        <label>Вес (кг):</label>
+        <input type="number" th:field="*{weight}" step="0.1" min="2" max="350" required>
+        <p th:if="${#fields.hasErrors('weight')}"
+           th:errors="*{weight}"></p>
+
+        <label>Дата рождения:</label>
+        <input type="date" th:field="*{birthDate}" required>
+        <p th:if="${#fields.hasErrors('birthDate')}"
+           th:errors="*{birthDate}"></p>
+
+        <label>Номер телефона:</label>
+        <input type="text" th:field="*{phone}" required>
+
+        <h3>Адрес проживания</h3>
+
+        <label>Почтовый индекс:</label>
+        <input type="text" th:field="*{postalCode}" required>
+
+        <label>Страна:</label>
+        <input type="text" th:field="*{country}" required>
+
+        <label>Регион:</label>
+        <input type="text" th:field="*{region}" required>
+
+        <label>Район:</label>
+        <input type="text" th:field="*{district}" required>
+
+        <label>Город:</label>
+        <input type="text" th:field="*{city}" required>
+
+        <label>Улица:</label>
+        <input type="text" th:field="*{street}" required>
+
+        <label>Дом:</label>
+        <input type="text" th:field="*{house}" required>
+
+        <label>Квартира:</label>
+        <input type="text" th:field="*{apartment}">
+
+        <h3>Учебные данные</h3>
+
+        <label>ВУЗ:</label>
+        <select th:field="*{university.id}" required>
+            <option value="">Выберите ВУЗ</option>
+            <option th:each="u : ${universities}"
+                    th:value="${u.id}"
+                    th:text="${u.name}">
+            </option>
+        </select>
+
+        <label>Курс:</label>
+        <input type="number" th:field="*{course}" min="1" max="6" required>
+        <p th:if="${#fields.hasErrors('course')}"
+           th:errors="*{course}"></p>
+
+        <label>Группа:</label>
+        <select th:field="*{studentGroup.id}" required>
+            <option value="">Выберите группу</option>
+            <option th:each="g : ${groups}"
+                    th:value="${g.id}"
+                    th:text="${g.name + ' — ' + g.university.name}">
+            </option>
+        </select>
+
+        <label>Средний балл:</label>
+        <input type="number" th:field="*{averageGrade}"
+               step="0.01" min="0" max="10" required>
+        <p th:if="${#fields.hasErrors('averageGrade')}"
+           th:errors="*{averageGrade}"></p>
+
+        <label>Специальность:</label>
+        <input type="text" th:field="*{specialty}" required>
+
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <br>
+    <a th:href="@{/students/main}">Вернуться к списку</a>
+    <br>
+    <a th:href="@{/references}">Управление ВУЗами и группами</a>
+</div>
+
+</body>
+</html>

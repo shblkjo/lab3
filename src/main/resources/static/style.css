@@ -1,0 +1,132 @@
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #444;
+}
+
+h3 {
+    margin-top: 25px;
+    color: #444;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+button,
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover,
+.button:hover {
+    background-color: #45a049;
+}
+
+a {
+    color: #2673b8;
+    margin-right: 8px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #eee;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Сообщения об ошибках валидации */
+p[th\\:errors],
+.field-error {
+    color: #d93025;
+}
+
+/* Чтобы таблица не ломала страницу на небольшом экране */
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+```
