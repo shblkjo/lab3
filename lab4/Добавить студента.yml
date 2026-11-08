@@ -1,0 +1,44 @@
+info:
+  name: Добавить студента
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8080/api/students
+  body:
+    type: json
+    data: |
+      
+      {
+        "apartment": "22",
+        "averageGrade": 4.8,
+        "birthDate": "2004-07-22",
+        "city": "Владимир",
+        "country": "Россия",
+        "course": 4,
+        "district": "Центральный",
+        "firstName": "Мария",
+        "gender": "Женский",
+        "height": 163.0,
+        "house": "40",
+        "lastName": "Петрова",
+        "nationality": "Русская",
+        "patronymic": "Сергеевна",
+        "phone": "+79994444444",
+        "postalCode": "198000",
+        "region": "Владимирская область",
+        "specialty": "Информационные системы",
+        "street": "Московская",
+        "weight": 56.0,
+        "universityId": 2,
+        "studentGroupId": 2
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
