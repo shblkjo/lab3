@@ -30,9 +30,9 @@ public class Student {
     private String nationality;
 
     @NotNull(message = "Введите рост")
-    @Min(value = 50, message = "Минимальный рост — 50 см")
-    @Max(value = 250, message = "Максимальный рост — 250 см")
-    private Integer height;
+    @DecimalMin(value = "50.0", message = "Минимальный рост — 50 см")
+    @DecimalMax(value = "250.0", message = "Максимальный рост — 250 см")
+    private Double height;
 
     @NotNull(message = "Введите вес")
     @DecimalMin(value = "2.0", message = "Минимальный вес — 2 кг")
@@ -150,11 +150,11 @@ public class Student {
         this.nationality = nationality;
     }
 
-    public Integer getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(Integer height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 

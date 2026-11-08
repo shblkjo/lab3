@@ -20,10 +20,7 @@ public class StudentController {
     private final UniversityRepository universityRepository;
     private final StudentGroupRepository studentGroupRepository;
 
-    public StudentController(
-            StudentRepository studentRepository,
-            UniversityRepository universityRepository,
-            StudentGroupRepository studentGroupRepository) {
+    public StudentController(StudentRepository studentRepository, UniversityRepository universityRepository, StudentGroupRepository studentGroupRepository) {
         this.studentRepository = studentRepository;
         this.universityRepository = universityRepository;
         this.studentGroupRepository = studentGroupRepository;
@@ -87,9 +84,7 @@ public class StudentController {
 
 
     @PostMapping("/find")
-    public String findStudents(@RequestParam String searchType,
-                               @RequestParam String searchQuery,
-                               Model model) {
+    public String findStudents(@RequestParam String searchType, @RequestParam String searchQuery, Model model) {
 
         if (searchQuery == null || searchQuery.isEmpty()) {
             return "redirect:/students/main";
