@@ -4,7 +4,7 @@
 Создание Spring-приложения с несколькими таблицами с использованием REST API
 
 ## Архитектура проекта
-- **Стек:** Spring Boot 3, Spring JDBC (JdbcTemplate), Maven.
+- **Стек:** Spring Boot 3, Maven.
 - **СУБД:** H2
 - **Основные слои:** 
   - Controller (endpoints)
